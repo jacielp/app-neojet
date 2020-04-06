@@ -1,0 +1,56 @@
+﻿@model DomainProduct.Result
+
+@* @if (Model.Products != null && Model.Products.Any())
+{
+    <div class="ui container topsellers no-slideshow">
+
+        <div class="ui horizontal divider">
+            Em Destaque
+        </div>
+        <!-- Page: ~/Views/Shared/Blocks/Product/_ProductList.cshtml -->
+        @Html.Partial("~/Views/Shared/Blocks/Product/_ProductList.cshtml", Model.Products)
+
+    </div>
+} *@
+
+@if (Model.Products != null && Model.Products.Any())
+{
+    <div class="ui container topsellers">
+
+        <div class="ui horizontal showcase-title">
+            <h3>Produtos em Destaque</h3>
+        </div>
+
+     <div class="ui grid">
+            <div class="ui car-maisvendidos slideshow-two-row slick-dotted sixteen wide column" data-qtd="6" data-auto="true" data-arrow="true" data-dots="false">
+                
+                @{
+                    var contador = 0;
+                    foreach (var product in Model.Products)
+                    {
+                        <!-- Page: ~/Views/Shared/Object/Product/_ProductInCard.cshtml -->
+                        @Html.Partial("~/Views/Shared/Object/Product/_ProductInCard.cshtml", product)
+                        
+                        contador++;
+
+                        if (contador >= 32)
+                        {
+                            break;
+                        }
+                    }
+                }
+                
+
+            </div>
+        </div>
+        <div class="ui hidden"></div>
+    <div class="row wrapper-mini-banner">
+        <div class="ui two column grid stackable middle aligned"> 
+            <div class="column ui eight wide mini-banner" id="Produtos-Em-Destaque-Esquerda"></div>
+            <div class="column ui eight wide mini-banner" id="Produtos-Em-Destaque-Direita"></div>
+        </div>
+    </div>
+    <div class="ui hidden"></div>
+</div>
+
+}

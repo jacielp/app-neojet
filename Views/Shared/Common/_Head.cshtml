@@ -1,0 +1,105 @@
+﻿@{
+string _classSearch = Session["idEventList"] == null ? "search" : "filterListEventsProducts";
+}
+<div class="ui container fluid _header">
+    <div class="ui container">
+        <div class="ui middle aligned four column centered grid">
+            <div class="row">
+                <div class="ui two wide column" id="menu-header">
+                    <div class="wsmobileheader clearfix">
+                        <a id="wsnavtoggle" class="animated-arrow"><span></span></a>
+                    </div>
+                </div>
+                <div class="ui ten wide mobile ten wide tablet three wide computer logotipo text center column">
+                    <a href="/Home" title="Página Inicial">
+                    <img class="ui middle aligned image logo" src="/assets/image/logo/logo_cs-ferramentas.png" alt="@LojaCorp.Control.Company._Company.FantasyName" title="@LojaCorp.Control.Company._Company.FantasyName">
+                    </a>
+                </div>
+                <div class="ui hide wide mobile center aligned hide wide tablet nine wide computer column searchcolumn">
+                    <div class="ui category @_classSearch">
+                        <div class="ui icon input fluid">
+                            <input class="prompt search-input" type="text" placeholder="O que está procurando hoje?">
+                            <i class="search-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="searchOpen" x="0px" y="0px" viewBox="0 0 483.083 483.083" style="enable-background:new 0 0 483.083 483.083;" xml:space="preserve" width="27px" height="27px">
+                                    <path d="M332.74,315.35c30.883-33.433,50.15-78.2,50.15-127.5C382.89,84.433,298.74,0,195.04,0S7.19,84.433,7.19,187.85    S91.34,375.7,195.04,375.7c42.217,0,81.033-13.883,112.483-37.4l139.683,139.683c3.4,3.4,7.65,5.1,11.9,5.1s8.783-1.7,11.9-5.1    c6.517-6.517,6.517-17.283,0-24.083L332.74,315.35z M41.19,187.85C41.19,103.133,110.04,34,195.04,34    c84.717,0,153.85,68.85,153.85,153.85S280.04,341.7,195.04,341.7S41.19,272.567,41.19,187.85z" fill="#7d9099"/>
+                                </svg>
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="searchClose" x="0px" y="0px" viewBox="0 0 371.23 371.23" style="enable-background:new 0 0 371.23 371.23;" xml:space="preserve" width="27px" height="27px">
+                                <polygon points="371.23,21.213 350.018,0 185.615,164.402 21.213,0 0,21.213 164.402,185.615 0,350.018 21.213,371.23   185.615,206.828 350.018,371.23 371.23,350.018 206.828,185.615 " fill="#7d9099"/>
+                                </svg>
+
+                            </i>
+                        </div>
+                        <div class="results"></div>
+                    </div>
+                </div>
+                <div class="ui hide wide mobile hide wide tablet three wide computer column center aligned login-user">
+                        <i class="icon-login">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 33 33" style="enable-background:new 0 0 33 33;" xml:space="preserve" width="28px" height="28px">
+                                    <path d="M16.5,33C7.402,33,0,25.598,0,16.5S7.402,0,16.5,0S33,7.402,33,16.5S25.598,33,16.5,33z M16.5,1C7.953,1,1,7.953,1,16.5   S7.953,32,16.5,32S32,25.047,32,16.5S25.047,1,16.5,1z" fill="#00173d"/>
+                                    <path d="M16.5,33c-3.435,0-6.736-1.058-9.549-3.06c-0.15-0.107-0.23-0.29-0.206-0.473s0.148-0.339,0.322-0.403   c4.146-1.535,4.815-2.781,4.815-5.169c0-0.631-0.142-0.838-0.398-1.214c-0.339-0.494-0.803-1.171-1.129-2.939   c-0.048-0.254-0.089-0.274-0.316-0.384c-0.606-0.292-1.163-0.712-1.309-2.628c0-0.928,0.32-1.441,0.585-1.708   c-0.058-0.33-0.153-0.899-0.242-1.519C8.62,10.726,8.6,7.325,12.506,5.744c3.404-1.38,6.121-0.626,6.974,0.273   c0.604,0.019,2.162,0.177,3.246,1.438c1.668,1.94,1.137,6.363,0.955,7.562c0.266,0.261,0.589,0.767,0.589,1.675   c-0.146,1.954-0.703,2.375-1.31,2.666c-0.228,0.11-0.269,0.129-0.316,0.384c-0.326,1.768-0.789,2.445-1.128,2.939   c-0.257,0.375-0.398,0.583-0.398,1.214c0,2.388,0.669,3.634,4.815,5.169c0.174,0.064,0.298,0.219,0.322,0.403   s-0.056,0.366-0.206,0.473C23.236,31.942,19.935,33,16.5,33z M8.317,29.651C10.779,31.191,13.589,32,16.5,32   s5.721-0.809,8.183-2.349c-3.474-1.426-4.565-2.864-4.565-5.755c0-0.941,0.278-1.348,0.573-1.779   c0.304-0.444,0.682-0.996,0.971-2.556c0.139-0.754,0.576-0.964,0.865-1.103c0.311-0.149,0.631-0.303,0.744-1.803   c-0.001-0.764-0.344-0.972-0.358-0.98c-0.184-0.106-0.303-0.329-0.264-0.537c0.248-1.329,0.656-5.474-0.681-7.031   c-0.913-1.062-2.352-1.091-2.626-1.08c-0.046-0.004-0.091-0.005-0.134-0.016c-0.13-0.033-0.35-0.146-0.417-0.262   c-0.272-0.466-2.641-1.403-5.91-0.08c-3.231,1.308-3.238,4.112-2.819,6.682c0.138,0.957,0.289,1.784,0.29,1.788   c0.041,0.225-0.076,0.449-0.283,0.544l0,0c0.003,0-0.339,0.209-0.339,1.008c0.112,1.461,0.433,1.616,0.743,1.765   c0.289,0.139,0.727,0.349,0.866,1.103c0.288,1.56,0.666,2.112,0.97,2.556c0.296,0.431,0.574,0.838,0.574,1.779   C12.883,26.788,11.792,28.226,8.317,29.651z" fill="#00173d"/>
+                                </svg>
+                        </i>
+                    <span>
+                    <div class="greeting">Seja bem-vindo!</div>
+                    @if (Session["UserAuthenticated"] == null || (Convert.ToBoolean(Session["Guest"]) == true))
+                    {
+                        <a href="/customer">Entre</a> <span>ou</span><span><a href="/customer"> Cadastre-se</a></span>
+                    }
+                    @if ((Session["UserAuthenticated"] != null) && (Convert.ToBoolean(Session["Guest"]) == false))
+                    {
+                        var userAuthenticated = (DomainCustomer.Entities.Customer)Session["UserAuthenticated"];
+                        Char delimiter = ' ';
+                        String[] nickName = userAuthenticated.Name.Split(delimiter);
+                        <div class="ui inline item dropdown pointing top right">
+                                <div class="text regular black">
+                                    <span class="text">Olá <span id="userNameCommon">@nickName[0]</span></span>
+                                </div>
+                                <div class="menu">
+                                    <a href="/customer" class="item" title="Minha Conta"><i class="options icon"></i>Minha Conta</a>
+                                    <a href="/order" class="item" title="Meus Pedidos"><i class="shopping bag icon"></i>Meus Pedidos</a>
+                                    <a href="/customer/logout" class="item" title="Sair"><i class="sign out icon"></i>Sair</a>
+                                </div>
+                        </div>
+                    }
+                </div>
+                <div class="ui four wide mobile three wide tablet one wide computer column">
+                    <div id="cartButton" class="ui cartbutton mini-cart" tabindex="0" data-segment="@(Session["segment"] != null ? Session["segment"] : "b2c")">
+                        <i class="cart-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 475.084 475.085" style="enable-background:new 0 0 475.084 475.085;" xml:space="preserve">
+                                <path d="M365.446,401.998c0,10.092,3.579,18.702,10.711,25.834c7.132,7.139,15.749,10.711,25.845,10.711    c10.081,0,18.698-3.572,25.83-10.711c7.139-7.132,10.711-15.742,10.711-25.834s-3.568-18.702-10.711-25.841    c-7.132-7.132-15.749-10.704-25.83-10.704c-10.096,0-18.713,3.572-25.845,10.704C369.025,383.296,365.446,391.906,365.446,401.998    z" fill="#00173d"/>
+                                <path d="M469.658,78.51c-3.618-3.617-7.898-5.426-12.848-5.426H113.918c-0.193-1.331-0.621-3.756-1.287-7.277    c-0.666-3.523-1.188-6.329-1.569-8.425c-0.383-2.087-1.093-4.611-2.142-7.561c-1.047-2.952-2.284-5.286-3.711-6.995    c-1.425-1.718-3.328-3.189-5.708-4.43c-2.378-1.233-5.092-1.853-8.136-1.853H18.276c-4.952,0-9.234,1.812-12.85,5.424    C1.809,45.583,0,49.868,0,54.816s1.809,9.231,5.426,12.847c3.619,3.617,7.902,5.424,12.85,5.424h58.237l50.532,234.976    c-0.378,0.76-2.329,4.373-5.852,10.848c-3.521,6.475-6.328,12.135-8.42,16.988c-2.093,4.859-3.14,8.616-3.14,11.279    c0,4.948,1.809,9.232,5.424,12.854c3.621,3.606,7.902,5.421,12.851,5.421h18.272h255.815h18.261c4.948,0,9.232-1.814,12.847-5.421    c3.62-3.621,5.427-7.905,5.427-12.854c0-4.949-1.807-9.233-5.427-12.847c-3.614-3.614-7.898-5.428-12.847-5.428h-262.66    c4.57-9.138,6.854-15.222,6.854-18.268c0-1.909-0.238-4.004-0.715-6.283s-1.047-4.805-1.713-7.569    c-0.667-2.752-1.093-4.799-1.283-6.133l298.077-34.831c4.753-0.575,8.658-2.614,11.703-6.14c3.046-3.518,4.565-7.562,4.565-12.133    V91.363C475.082,86.415,473.278,82.132,469.658,78.51z" fill="#00173d"/>
+                                <path d="M109.632,401.998c0,10.092,3.567,18.702,10.706,25.834c7.141,7.139,15.75,10.711,25.841,10.711    c10.085,0,18.699-3.572,25.835-10.711c7.139-7.132,10.71-15.742,10.71-25.834s-3.568-18.702-10.71-25.841    c-7.137-7.132-15.75-10.704-25.835-10.704c-10.09,0-18.704,3.572-25.841,10.704C113.203,383.296,109.632,391.906,109.632,401.998z" fill="#00173d"/>
+                            </svg>
+                        </i>
+                        @*<span class="hidden mobile-hide">@(Session["idEventList"] == null && Session["EventList"] == null ? "Carrinho" : "Minha Lista")</span>*@
+                        <span id="total_itens_card">
+                            @{
+                                if (Session["EventList"] == null)
+                                {
+                                    @Html.Action("TotalItensCart", "Checkout")
+                                }
+                                else
+                                {
+                                    @Html.Action("TotalItensList", "EventList")
+                                }
+                            }
+                        </span>
+                    </div>
+                </div>
+                <div class="ui sixteen wide mobile-fluid column search-responsive">
+                    <div class="ui searchMobile mobile-fluid">
+                        <div class="ui blocoBusca @_classSearch">
+                            <div class="ui icon input fluid">
+                                <input class="prompt" type="text" placeholder="Buscar...">
+                                <i class="search icon"></i>
+                            </div>
+                            <div class="results"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

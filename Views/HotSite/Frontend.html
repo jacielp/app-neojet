@@ -1,0 +1,134 @@
+@{
+    ViewBag.Title = "Formulário Certificação";
+    Layout = "~/Views/Shared/Base/_LayoutBreadCrumbContent.cshtml";
+}
+
+@section breadcrumbs {
+    <div class="ui container">
+        <div class="ui one column grid stackable middle aligned">
+            <div class="row">
+                <div class="column">
+                    <h1>@ViewBag.Title</h1>
+                    <div class="ui breadcrumb text small">
+                        <a class="section" href="/">Home</a>
+                        <i class="right angle icon divider"></i>
+                        <a class="section" href="/">Certificação</a>
+                        <i class="right angle icon divider"></i>
+                        <a class="section" href="/">Formulário</a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+<div class="ui container margin bottom large">
+    <div class="ui grid">
+        <div class="eight wide column">
+            <form class="ui form" id="form-certificacao" action="/hotsite/frontend2">
+                <div class="field">
+                    <label>Nome</label>
+                    <input type="text" name="nome" id="nome" placeholder="Digite seu nome"><label id="cnome">Nome: </label>
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" name="email" id="email" placeholder="Digite seu email"><label id="cemail">Email: </label>
+                </div>
+                <div class="field">
+                    <label>Telefone</label>
+                    <input type="text" name="telefone" id="telefone" placeholder="Seu telefone"><label id="ctelefone">Telefone: </label>
+                </div>
+                <div class="field">
+                    <label>Assunto</label>
+                    <input type="text" name="assunto" id="assunto" placeholder="Qual é o assunto"><label id="cassunto">Assunto: </label>
+                </div>
+                <div class="field">
+                    <label>Mensagem</label>
+                    <textarea rows="2" name="mensagem" id="mensagem" placeholder="Escreva sua mensagem..."></textarea><label id="cmensagem">Mensagem: </label>
+                </div>
+                <div class="ui error message"></div>
+                
+                <button class="ui button" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+$(function () {
+
+    document.getElementById("nome").value = sessionStorage.getItem("nome");
+    document.getElementById("email").value = sessionStorage.getItem("email");
+    document.getElementById("assunto").value = sessionStorage.getItem("assunto");
+    document.getElementById("mensagem").value = sessionStorage.getItem("mensagem");
+
+    $('#form-certificacao').form({
+    
+        sessionStorage.setItem('nome', document.getElementById("nome").value); // gravar
+        sessionStorage.setItem('email',document.getElementById("email").value); 
+        sessionStorage.setItem('assunto',document.getElementById("assunto").value); 
+        sessionStorage.setItem('mensagem',document.getElementById("mensagem").value);
+        
+        sessionStorage.getItem('nome', document.getElementById("nome").value); // Pegar
+        sessionStorage.getItem('email',document.getElementById("email").value); 
+        sessionStorage.getItem('assunto',document.getElementById("assunto").value); 
+        sessionStorage.getItem('mensagem',document.getElementById("mensagem").value);
+        
+        nome: {
+            identifier: 'nome',
+            rules: [
+                {
+                    type: 'empty',
+                    prompt: 'Preencha seu nome'
+                }
+            ]
+        },
+        email: {
+            identifier: 'email',
+            rules: [
+                {
+                    type: 'empty',
+                    prompt: 'Digite um email válido'
+                }
+            ]
+        },
+        telefone: {
+            identifier: 'telefone',
+            rules: [
+                {
+                    type: 'regExp',
+                    value : /(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})/i,
+                    prompt: 'Digite um telefone válido'
+                }
+            ]
+        },
+        assunto: {
+            identifier: 'assunto',
+            rules: [
+                {
+                    type: 'empty',
+                    prompt: 'Digite o assunto da mensagem'
+                }
+            ]
+        },
+        mensagem: {
+            identifier: 'mensagem',
+            rules: [
+                {
+                    type: 'empty',
+                    prompt: 'Digite sua mensagem'
+                }
+            ]
+        },   
+        onSuccess: function (e) {
+            e.preventDefault();
+            alert('OK');
+        }
+
+    })
+    
+});
+
+</script>

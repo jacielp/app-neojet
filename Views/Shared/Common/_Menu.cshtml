@@ -1,0 +1,123 @@
+﻿@model List<DomainProduct.Entities.Category>
+
+
+<div class="ui center aligned six wide mobile five wide tablet ten wide computer column menuheader">
+    <div class="overlapblackbg"></div>
+        <div class="wsmain">
+            <nav class="wsmenu">
+                <ul class="mobile-sub wsmenu-list ui menu container">
+                    <div class="ui container login-mobile">
+                        <div class="ui grid middle aligned">
+                            <div class="row two column">
+                                <div class="ui twelve wide column">
+                                    <span>
+                                        <div class="greeting">Seja bem-vindo!</div>
+                                        @if (Session["UserAuthenticated"] == null || (Convert.ToBoolean(Session["Guest"]) == true))
+                                        {
+                                            <a href="/customer">Entre</a> <span>ou</span><span><a href="/customer"> Cadastre-se</a></span>
+                                        }
+                                        @if ((Session["UserAuthenticated"] != null) && (Convert.ToBoolean(Session["Guest"]) == false))
+
+                                        {
+                                            var userAuthenticated = (DomainCustomer.Entities.Customer)Session["UserAuthenticated"];
+                                            Char delimiter = ' ';
+                                            String[] nickName = userAuthenticated.Name.Split(delimiter);
+                                            <div class="ui inline item dropdown pointing top right">
+                                                    <div class="text regular black">
+                                                        <span class="text">Olá <span id="userNameCommon">@nickName[0]</span></span>
+                                                    </div>
+                                                    <div class="menu">
+                                                        <a href="/customer" class="item" title="Minha Conta"><i class="options icon"></i>Minha Conta</a>
+                                                        <a href="/order" class="item" title="Meus Pedidos"><i class="shopping bag icon"></i>Meus Pedidos</a>
+                                                        <a href="/customer/logout" class="item" title="Sair"><i class="sign out icon"></i>Sair</a>
+                                                    </div>
+                                            </div>
+                                        }
+                                    </span>
+                                </div>
+                                <div class="ui four wide column">
+                                    <span id="closeMenu" class="ui button black icon closeMenu floated right"><i class="remove icon"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <li class="wssearchbar clearfix">
+                        <form class="topmenusearch mobile only" method="get" action="/busca">
+                            <input placeholder="Buscar..." name="n">
+                            <button class="btnstyle"><i class="icon search" aria-hidden="true"></i></button>
+                        </form>
+                    </li>
+                    @foreach (DomainProduct.Entities.Category category in Model)
+                    {
+                        if (category.Level.Length == 2)
+                        {
+                            <li>
+                                <a href="@category.UrlFriendly" class="item">
+                                    <span class="text">@category.Name</span>
+                                    @if (category.ChildCategories != null && category.ChildCategories.Any())
+                                    {
+                                        @*<i class="dropdown-icon">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 129 129" width="14" fill="#FFFFFF">
+                                                <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" fill="#FFFFFF" />
+                                            </svg>
+                                        </i>*@
+                                    }
+                                </a>
+                                @if (category.ChildCategories != null && category.ChildCategories.Any())
+                                {
+                                    <div class="megamenu clearfix">
+                                        <div class="ui grid">
+                                            <div class="row no padding top bottom">
+                                                <div class="menu-categories @(category.Image == null ? "sixteen wide computer column" : "fifteen wide mobile sixtenn wide tablet six wide computer column")">
+                                                    <div class="ui grid three column">
+                                                        <div class="sixteen wide computer column">
+                                                        <h3 class="text category-level1">@category.Name</h3>
+                                                        </div>
+                                                        @if (category.ChildCategories != null && category.ChildCategories.Any())
+                                                        {
+                                                            foreach (DomainProduct.Entities.Category subCategoryLevel1 in category.ChildCategories)
+                                                            {
+                                                            
+                                                                    <div class="@(category.Image == null ? "sixteen wide mobile eight wide tablet five wide computer column" : "fifteen wide mobile sixteen wide tablet eight wide computer column subcategory-list")">
+
+                                                                    <div class="ui list relaxed">
+                                                                        <h4 class="header"><a href="@subCategoryLevel1.UrlFriendly">@subCategoryLevel1.Name</a></h4>
+                                                                        @* @if (subCategoryLevel1.ChildCategories != null && subCategoryLevel1.ChildCategories.Any())
+                                                                        {
+                                                                            <div class="ui divider"></div>
+                                                                            foreach (var subCategoryLevel2 in subCategoryLevel1.ChildCategories)
+                                                                            {
+                                                                                <a class="item" href="@subCategoryLevel2.UrlFriendly">@subCategoryLevel2.Name</a>
+                                                                            }
+                                                                        } *@
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        }
+                                                    </div>
+                                                </div>
+                                                  @if (category.Image != null)
+                                                    {
+                                                        <div class="ten wide computer only column mobile-hide center aligned">
+                                                            <a href="@category.UrlFriendly">
+                                                                <img class="ui image" src="@category.Image" />
+                                                            </a>
+                                                        </div>
+                                                    }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="item" href="~/category/index/@category.IdCategory"><span>@category.Name</span></a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </nav>
+        </div>
+</div>

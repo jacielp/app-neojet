@@ -1,0 +1,233 @@
+﻿@Html.Action("FooterHalfBanner", "Banner")
+
+@{
+List
+<DomainSocialNetwork.Entities.SocialNetwork>
+redesSociais = Session["SocialNetworkLinks"] != null ? (List
+<DomainSocialNetwork.Entities.SocialNetwork>
+)Session["SocialNetworkLinks"] : new List
+<DomainSocialNetwork.Entities.SocialNetwork>
+();
+}
+@*
+<div class="ui ui container  newsletter-bar">
+    <div class="ui container">
+        <div class="ui grid middle aligned">
+            <div class="row stackable">
+                <div class="column">
+                    <div class="ui form">
+                        <div class="inline fields margin none">
+                            <div class="field">
+                                <span>
+                                    <i class="icon envelope"></i>
+                                    <h4 class="header">Newsletter</h4>
+                                </span>
+                            </div>
+                            <div class="field textNews">
+                                <span class="text">
+                                Cadastre seu e-mail e receba novidades e promoções.
+                                </span>
+                            </div>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="mail icon"></i>
+                                    <input type="text" placeholder="seu@email.com.br" id="email_news">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <button class="ui button red" id="btn_news">
+                                Cadastrar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+*@
+<div class="ui container fluid  vertical segment footer">
+    <div class="ui container">
+        <div class="ui four column stackable inverted equal height grid">
+            <div class="ten wide table three wide computer column">
+                <div class="ui grid stackable">
+                    <div class="row one column no padding listMobile">
+                        @Html.Action("CustomPages", "Home")
+                    </div>
+                </div>
+            </div>
+            <div class="six wide tablet four wide computer column">
+                <div class="ui grid stackable">
+                    <div class="row one column no padding listMobile">
+                        @Html.Action("GetList", "EventList")
+                        <div class="column">
+                            <h4 class="ui header">Contato <i class="ui icon chevron right mobile only"></i></h4>
+                            <div class="ui inverted link list">
+                                <ul class="row one column no padding listMobile">
+                                    <li>
+                                        <i class="icon-footer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 14 14" style="enable-background:new 0 0 14 14;" xml:space="preserve" width="18px" height="14px">
+                                            <g>
+                                                <g>
+                                                    <path d="M7,9L5.268,7.484l-4.952,4.245C0.496,11.896,0.739,12,1.007,12h11.986    c0.267,0,0.509-0.104,0.688-0.271L8.732,7.484L7,9z" fill="#002a70"/>
+                                                    <path d="M13.684,2.271C13.504,2.103,13.262,2,12.993,2H1.007C0.74,2,0.498,2.104,0.318,2.273L7,8    L13.684,2.271z" fill="#002a70"/>
+                                                    <polygon points="0,2.878 0,11.186 4.833,7.079   " fill="#002a70"/>
+                                                    <polygon points="9.167,7.079 14,11.186 14,2.875   " fill="#002a70"/>
+                                                </g>
+                                            </g>
+                                            </svg>
+
+                                        </i>
+                                        <a href="">@LojaCorp.Control.Company._Company.EmailContact</a>
+                                    </li>
+                                    <li>
+                                        <i class="icon-footer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="15px" height="15px">
+                                                <path d="M256.064,0h-0.128C114.784,0,0,114.816,0,256c0,56,18.048,107.904,48.736,150.048l-31.904,95.104l98.4-31.456    C155.712,496.512,204,512,256.064,512C397.216,512,512,397.152,512,256S397.216,0,256.064,0z M405.024,361.504    c-6.176,17.44-30.688,31.904-50.24,36.128c-13.376,2.848-30.848,5.12-89.664-19.264C189.888,347.2,141.44,270.752,137.664,265.792    c-3.616-4.96-30.4-40.48-30.4-77.216s18.656-54.624,26.176-62.304c6.176-6.304,16.384-9.184,26.176-9.184    c3.168,0,6.016,0.16,8.576,0.288c7.52,0.32,11.296,0.768,16.256,12.64c6.176,14.88,21.216,51.616,23.008,55.392    c1.824,3.776,3.648,8.896,1.088,13.856c-2.4,5.12-4.512,7.392-8.288,11.744c-3.776,4.352-7.36,7.68-11.136,12.352    c-3.456,4.064-7.36,8.416-3.008,15.936c4.352,7.36,19.392,31.904,41.536,51.616c28.576,25.44,51.744,33.568,60.032,37.024    c6.176,2.56,13.536,1.952,18.048-2.848c5.728-6.176,12.8-16.416,20-26.496c5.12-7.232,11.584-8.128,18.368-5.568    c6.912,2.4,43.488,20.48,51.008,24.224c7.52,3.776,12.48,5.568,14.304,8.736C411.2,329.152,411.2,344.032,405.024,361.504z" fill="#002a70"/>
+                                            </svg>
+                                        </i>
+                                        @if (redesSociais.Find(f => f.Identifier.ToUpper() == "WHATSAPP") != null)
+                                        {
+                                        <a class="text color " href="https://api.whatsapp.com/send?text=@HttpContext.Current.Request.Url.ToString()" target="_blank" title="WHATSAPP"> WhatsApp:
+                                        @redesSociais.Find(f => f.Identifier == "whatsapp").Content
+                                        </a>
+                                        }
+                                    </li>
+                                    <li>
+                                        <i class="icon-footer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35;" xml:space="preserve">
+                                                <path d="M17.51,20.215c5.572,0,10.105-4.533,10.105-10.105C27.615,4.531,23.082,0,17.51,0C11.935,0,7.4,4.531,7.4,10.109    C7.399,15.682,11.935,20.215,17.51,20.215z M21.909,3.637c0.332,2.309,2.062,5.582,3.827,7.201    c-0.374,4.217-3.917,7.537-8.227,7.537c-3.297,0-6.141-1.945-7.468-4.741c1.444,1.788,3.826,3.011,6.558,3.167    c0.146,0.018,0.295,0.031,0.452,0.031c0.046,0,0.09-0.004,0.135-0.006c0.003,0,0.005,0,0.008,0    c0.922-0.037,1.649-0.406,1.649-0.863c0-0.48-0.802-0.871-1.792-0.871c-0.99,0-1.792,0.391-1.792,0.871    c0,0.043,0.014,0.082,0.025,0.125c-3.344-0.689-5.859-3.137-6.038-6.094c0.015-1.06,0.228-2.075,0.608-3.002    C12.13,6.787,21.483,4.912,21.909,3.637z" fill="#002a70"/>
+                                                <path d="M25.121,18.482c-2.007,1.822-4.652,2.943-7.56,2.963v-0.006c-0.023,0-0.04,0.006-0.062,0.006    c-0.018,0-0.037-0.006-0.057-0.006v0.006c-2.913-0.02-5.56-1.141-7.56-2.963c-3.666,0.684-6.441,3.889-6.441,7.752V35h14.001    h0.119h13.997v-8.766C31.56,22.371,28.782,19.166,25.121,18.482z" fill="#002a70"/>
+                                            </svg>
+                                        </i>
+                                        <a href="">Televendas: 
+                                        @LojaCorp.Control.Company._Company.Phone1 @LojaCorp.Control.Company._Company.Phone2
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="column eight wide tablet sixteen wide computer mobile-hide">
+                                <h4 class="ui header">Siga-nos</h4>
+                                <socialbar>
+                                    @if (redesSociais.Find(f => f.Identifier == "facebook") != null)
+                                    {
+                                    <a class="text color " href="@redesSociais.Find(f => f.Identifier == "facebook").Content" target="_blank">
+                                    <i class="facebook-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M31,25.7h-4.039c0,6.453,0,14.396,0,14.396h-5.985c0,0,0-7.866,0-14.396h-2.845v-5.088h2.845    v-3.291c0-2.357,1.12-6.04,6.04-6.04l4.435,0.017v4.939c0,0-2.695,0-3.219,0c-0.524,0-1.269,0.262-1.269,1.386v2.99h4.56L31,25.7z    " fill="#002a70"/>
+                                        </svg>
+                                    </i>
+                                    </a>
+                                    }
+                                    @if (redesSociais.Find(f => f.Identifier == "instagram") != null)
+                                    {
+                                    <a class="text color " href="@redesSociais.Find(f => f.Identifier == "instagram").Content" target="_blank">
+                                    <i class="instagram-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                            <path d="M24.825,29.796c2.739,0,4.972-2.229,4.972-4.97c0-1.082-0.354-2.081-0.94-2.897c-0.903-1.252-2.371-2.073-4.029-2.073     c-1.659,0-3.126,0.82-4.031,2.072c-0.588,0.816-0.939,1.815-0.94,2.897C19.854,27.566,22.085,29.796,24.825,29.796z" fill="#002a70"/>
+                                            <polygon points="35.678,18.746 35.678,14.58 35.678,13.96 35.055,13.962 30.891,13.975 30.907,18.762    " fill="#002a70"/>
+                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826     C49.652,11.137,38.516,0,24.826,0z M38.945,21.929v11.56c0,3.011-2.448,5.458-5.457,5.458H16.164     c-3.01,0-5.457-2.447-5.457-5.458v-11.56v-5.764c0-3.01,2.447-5.457,5.457-5.457h17.323c3.01,0,5.458,2.447,5.458,5.457V21.929z" fill="#002a70"/>
+                                            <path d="M32.549,24.826c0,4.257-3.464,7.723-7.723,7.723c-4.259,0-7.722-3.466-7.722-7.723c0-1.024,0.204-2.003,0.568-2.897     h-4.215v11.56c0,1.494,1.213,2.704,2.706,2.704h17.323c1.491,0,2.706-1.21,2.706-2.704v-11.56h-4.217     C32.342,22.823,32.549,23.802,32.549,24.826z" fill="#002a70"/>
+                                        </svg>
+                                    </i>
+                                    </a>
+                                    }
+                                    @if (redesSociais.Find(f => f.Identifier == "twitter") != null)
+                                    {
+                                    <a class="text color " href="@redesSociais.Find(f => f.Identifier == "twitter").Content" target="_blank">
+                                    <i class="twitter icon"></i>
+                                    </a>
+                                    }
+                                    @if (redesSociais.Find(f => f.Identifier == "youtube") != null)
+                                    {
+                                    <a class="text color " href="@redesSociais.Find(f => f.Identifier == "youtube").Content" target="_blank">
+                                    <i class="youtube-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 97.75 97.75" style="enable-background:new 0 0 97.75 97.75;" xml:space="preserve">
+                                            <path d="M39.969,59.587c7.334-3.803,14.604-7.571,21.941-11.376c-7.359-3.84-14.627-7.63-21.941-11.447    C39.969,44.398,39.969,51.954,39.969,59.587z" fill="#002a70"/>
+                                            <path d="M48.875,0C21.883,0,0,21.882,0,48.875S21.883,97.75,48.875,97.75S97.75,75.868,97.75,48.875S75.867,0,48.875,0z     M82.176,65.189c-0.846,3.67-3.848,6.377-7.461,6.78c-8.557,0.957-17.217,0.962-25.842,0.957c-8.625,0.005-17.287,0-25.846-0.957    c-3.613-0.403-6.613-3.11-7.457-6.78c-1.203-5.228-1.203-10.933-1.203-16.314s0.014-11.088,1.217-16.314    c0.844-3.67,3.844-6.378,7.457-6.782c8.559-0.956,17.221-0.961,25.846-0.956c8.623-0.005,17.285,0,25.841,0.956    c3.615,0.404,6.617,3.111,7.461,6.782c1.203,5.227,1.193,10.933,1.193,16.314S83.379,59.962,82.176,65.189z" fill="#002a70"/>
+                                        </svg>
+                                    </i>
+                                    </a>
+                                    }
+                                    @if (redesSociais.Find(f => f.Identifier == "google plus") != null)
+                                    {
+                                    <a class="text color " href="@redesSociais.Find(f => f.Identifier == "google plus").Content" target="_blank">
+                                    <i class="google plus icon"></i>
+                                    </a>
+                                    }
+                                </socialbar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sixteen wide mobile sixteen wide tablet four wide computer column left aligned">
+                <div class="ui grid stackable">
+                    <div class="row one column no padding">
+                        <div class="column seven wide tablet sixteen wide computer margin bottom large">
+                            <h4 class="ui header">PAGAMENTO</h4>
+                            @Html.Partial("~/Views/Shared/Common/_Payments_List.cshtml")
+                            
+                            <div class="item">
+                                <img src="//assets.pagseguro.com.br/ps-integration-assets/banners/seguranca/seguranca_125x125.gif" alt="Banner PagSeguro" title="Compre com PagSeguro e fique sossegado">
+                            </div>
+                            
+                        </div>
+                        <div class="column seven wide tablet sixteen wide computer middle aligned seals-response">
+                            <h4 class="ui header">Envio</h4>
+                            <div class="ui horizontal list selos">
+                                 @Html.Partial("~/Views/Shared/Common/_Send_List.cshtml")
+                               @* @Html.Action("EBit", "Company")
+                                @Html.Action("GetCompanySeal", "Company")*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sixteen wide mobile sixteen wide tablet five wide computer column left aligned">
+                @if (redesSociais.Find(f => f.Identifier == "facebook") != null)
+                {
+                <div class="fb-page" data-href="@redesSociais.Find(f => f.Identifier == "facebook").Content" data-small-header="false" data-adapt-container-width="true" data-width="420" data-hide-cover="false" data-show-facepile="true"><blockquote cite="@redesSociais.Find(f => f.Identifier == "facebook").Content" class="fb-xfbml-parse-ignore"><a href="@redesSociais.Find(f => f.Identifier == "facebook").Content">@LojaCorp.Control.Company._Company.FantasyName</a></blockquote>
+            </div>
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.0';
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+            }
+        </div>
+    </div>
+</div>
+</div>
+<div class="ui container fluid  vertical subFooter">
+    <div class="ui container">
+        <div class="ui two column stackable inverted equal height grid">
+            <div class="sixteen wide mobile sixteen wide tablet eleven wide computer column left aligned middle aligned">
+                <div class="column text small textoEmpresa">
+                    <h6>2018 @LojaCorp.Control.Company._Company.FantasyName - Todos os Direitos Reservados</h6>
+                    -
+                    <address>
+                        @{
+                        string complementAddress = LojaCorp.Control.Company._Company.Complement != "" ? " " + LojaCorp.Control.Company._Company.Complement + ", " : "";
+                        }
+                        @string.Format("{0}, {1}{2}", LojaCorp.Control.Company._Company.Address, complementAddress, LojaCorp.Control.Company._Company.Neighbourhood) |
+                        @string.Format("{0}-{1}-{2}", LojaCorp.Control.Company._Company.CEP, LojaCorp.Control.Company._Company.City, LojaCorp.Control.Company._Company.State) |
+                        CNPJ: @LojaCorp.Control.Company._Company.CNPJ
+                    </address>
+                </div>
+            </div>
+            <div class="sixteen wide mobile sixteen wide tablet five wide computer column middle aligned">
+                <div class="ui two column row grid">
+                    <div class="column by-jet right aligned">@Html.Partial("Common/_JetLogo")</div>
+                    <div class="column by-nidi right aligned">@Html.Partial("Common/_AppLogo")</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-block"></div>
